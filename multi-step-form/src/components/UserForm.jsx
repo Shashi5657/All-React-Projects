@@ -1,6 +1,8 @@
-import React from "react";
 import { useState } from "react";
 import FormUserDetails from "./FormUserDetails";
+import FormPersonalDetails from "./FormPersonalDetails";
+import Confirm from "./Confirm";
+import Success from "./Success";
 
 const UserForm = () => {
   const [details, setDetails] = useState({
@@ -34,18 +36,28 @@ const UserForm = () => {
       return (
         <FormUserDetails
           nextStep={nextStep}
-          prevStep={prevStep}
           handleChange={handleChange}
           values={values}
         />
       );
 
     case 2:
-      return <h1> Form Personal Details</h1>;
+      return (
+        <FormPersonalDetails
+          nextStep={nextStep}
+          prevStep={prevStep}
+          values={values}
+          handleChange={handleChange}
+        />
+      );
     case 3:
-      return <h1> Confirm</h1>;
+      return (
+        <Confirm nextStep={nextStep} prevStep={prevStep} values={values} />
+      );
     case 4:
-      return <h1> FSuccess</h1>;
+      return <Success />;
+    default:
+      return <h1>No page found</h1>;
   }
 };
 
